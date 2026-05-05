@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Windermere Medical Spa - Orlando</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0c0900;--acc:#d4af37;--surf:#161005;--mid:#201808;--txt:#fef9e8;--radius:16px;--radius-lg:24px}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* ── Animations ── */
+@keyframes gradBG{0%,100%{background-position:0% 60%}50%{background-position:100% 40%}}
+@keyframes blobMorph{
+  0%,100%{transform:translate(0,0) scale(1) rotate(0deg)}
+  20%{transform:translate(28px,-36px) scale(1.12) rotate(7deg)}
+  50%{transform:translate(-18px,22px) scale(0.88) rotate(-5deg)}
+  75%{transform:translate(22px,12px) scale(1.07) rotate(4deg)}
+}
+@keyframes ctaPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,.6),0 8px 32px rgba(212,175,55,.3)}
+  60%{box-shadow:0 0 0 22px rgba(212,175,55,0),0 8px 32px rgba(212,175,55,.3)}
+}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-25%)}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+/* ── Typography ── */
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin-bottom:14px;display:block}
+.section-h2{font-family:'Syne',sans-serif;font-size:clamp(28px,5vw,44px);font-weight:800;line-height:1.1;margin-bottom:20px;color:var(--txt)}
+.section-sub{font-size:16px;opacity:.6;max-width:560px;line-height:1.7;margin-bottom:48px}
+.grad-text{background:linear-gradient(90deg,#d4af37 0%,#fff 40%,#d4af37cc 60%,#d4af37 100%);background-size:200% auto;animation:shimmer 5s linear infinite;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* ── Nav ── */
+nav{position:sticky;top:0;z-index:999;display:flex;justify-content:space-between;align-items:center;padding:0 40px;height:68px;background:rgba(12,9,0,.93);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-logo{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--acc);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px}
+.nav-right{display:flex;gap:10px;align-items:center}
+.btn-primary{background:var(--acc);color:var(--bg);padding:10px 22px;border-radius:50px;font-weight:700;font-size:13px;transition:transform .2s,box-shadow .2s;display:inline-block}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,175,55,.5)}
+.btn-outline{border:1.5px solid rgba(255,255,255,.2);color:var(--txt);padding:9px 20px;border-radius:50px;font-weight:600;font-size:13px;transition:border-color .2s}
+.btn-outline:hover{border-color:var(--acc);color:var(--acc)}
+
+/* ── Hero ── */
+.hero{position:relative;min-height:96vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 24px 100px;overflow:hidden;background:linear-gradient(-45deg,#0c0900,#161005,#20180888,#d4af3718,#0c0900,#16100588);background-size:500% 500%;animation:gradBG 20s ease infinite}
+.hero-inner{position:relative;z-index:1;max-width:900px;animation:fadeUp .9s cubic-bezier(.16,1,.3,1) both}
+.hs{position:absolute;border-radius:50%;animation:blobMorph 12s ease-in-out infinite}
+.hs.s1{width:580px;height:580px;background:#d4af37;opacity:.13;top:-200px;right:-160px;animation-delay:0s}
+.hs.s2{width:380px;height:380px;background:#d4af37;opacity:.11;bottom:-100px;left:-100px;animation-delay:-5s}
+.hs.s3{width:260px;height:260px;background:#d4af37;opacity:.07;top:30%;left:6%;animation-delay:-2.5s}
+.pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(12px);padding:9px 24px;border-radius:50px;font-size:13px;font-weight:500;margin-bottom:36px}
+.hero-h1{font-family:'Syne',sans-serif;font-size:clamp(38px,7vw,74px);font-weight:800;line-height:1.04;margin-bottom:24px;letter-spacing:-.02em}
+.hero-sub{font-size:clamp(15px,2vw,19px);opacity:.6;max-width:620px;margin:0 auto 48px;line-height:1.75}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero-btn-p{background:var(--acc);color:var(--bg);padding:17px 44px;border-radius:50px;font-family:'Syne',sans-serif;font-weight:700;font-size:15px;transition:transform .2s,box-shadow .2s;display:inline-block;animation:ctaPulse 3s ease-out infinite}
+.hero-btn-p:hover{transform:translateY(-3px)}
+.hero-btn-s{border:1.5px solid rgba(255,255,255,.28);color:var(--txt);padding:16px 38px;border-radius:50px;font-family:'Syne',sans-serif;font-weight:700;font-size:15px;backdrop-filter:blur(8px);transition:all .2s;display:inline-block}
+.hero-btn-s:hover{border-color:#d4af37;color:#d4af37}
+
+/* ── Trust ticker ── */
+.tbar{background:var(--surf);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);padding:20px 0;overflow:hidden}
+.ttrack{display:flex;width:max-content;animation:ticker 24s linear infinite}
+.titem{display:flex;align-items:center;gap:10px;padding:0 40px;border-right:1px solid rgba(255,255,255,.08);white-space:nowrap;flex-shrink:0}
+
+/* ── Stats bar ── */
+.stats-bar{background:var(--mid);padding:56px 24px}
+.stats-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center}
+.stat-num{font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,60px);font-weight:800;color:#d4af37;line-height:1}
+.stat-lbl{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;opacity:.5;margin-top:8px}
+
+/* ── Services ── */
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:0}
+.scard{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-lg);padding:34px 28px;backdrop-filter:blur(10px);transition:transform .28s,box-shadow .28s,border-color .28s}
+.scard:hover{transform:translateY(-8px);box-shadow:0 28px 64px rgba(0,0,0,.45);border-color:rgba(212,175,55,.35)}
+.scard-icon{font-size:34px;margin-bottom:18px;animation:floatY 4s ease-in-out infinite}
+
+/* ── Why us ── */
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.why-card{display:flex;align-items:flex-start;gap:18px;padding:26px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);transition:border-color .2s,transform .2s}
+.why-card:hover{border-color:rgba(212,175,55,.4);transform:translateY(-3px)}
+.why-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+
+/* ── Steps ── */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;text-align:center}
+.step-num{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--bg);margin:0 auto}
+
+/* ── FAQ ── */
+.faq-item{border-bottom:1px solid rgba(255,255,255,.08)}
+.faq-q{width:100%;background:none;border:none;color:var(--txt);font-size:15px;font-weight:600;padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:'Inter',sans-serif;text-align:left}
+.faq-icon{font-size:22px;color:#d4af37;flex-shrink:0;transition:transform .28s;font-weight:300}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{font-size:14px;opacity:.65;line-height:1.8;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;padding:0}
+.faq-item.open .faq-a{max-height:220px;padding:0 0 20px}
+
+/* ── Booking form ── */
+.bform{background:var(--surf);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-lg);padding:48px;max-width:700px;margin:0 auto}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.fg{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#d4af37;opacity:.85}
+input,select,textarea{padding:13px 18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;color:var(--txt);outline:none;width:100%;transition:border-color .2s}
+input:focus,select:focus,textarea:focus{border-color:#d4af37}
+select option{background:var(--bg)}
+.subtn{width:100%;background:var(--acc);color:var(--bg);border:none;padding:17px;border-radius:50px;font-family:'Syne',sans-serif;font-size:16px;font-weight:800;cursor:pointer;margin-top:8px;transition:transform .2s,box-shadow .2s}
+.subtn:hover{transform:translateY(-2px);box-shadow:0 14px 44px rgba(212,175,55,.45)}
+.cmsg{margin-top:14px;font-size:12px;opacity:.45;text-align:center}
+
+/* ── Contact ── */
+.csec{text-align:center;padding:100px 24px;background:#201808}
+.big-phone{font-family:'Syne',sans-serif;font-size:clamp(28px,6vw,62px);font-weight:800;color:#d4af37;display:block;margin:20px 0 12px;transition:opacity .2s}
+.big-phone:hover{opacity:.8}
+
+/* ── Footer ── */
+footer{background:#030305;color:rgba(255,255,255,.25);text-align:center;padding:28px 24px;font-size:12px}
+
+/* ── Mobile CTA ── */
+.mob-cta{display:none;position:fixed;bottom:0;left:0;right:0;padding:17px 20px;background:linear-gradient(90deg,#d4af37,#d4af37dd);z-index:9999;text-align:center;font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:var(--bg);text-decoration:none}
+
+/* ── Scroll animations ── */
+.animate{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.animate.visible{opacity:1;transform:none}
+
+/* ── Sections ── */
+.section{padding:100px 24px;max-width:1000px;margin:0 auto}
+.section-bg{padding:100px 24px;background:var(--surf)}
+.section-bg-inner{max-width:1000px;margin:0 auto}
+
+/* ── Layout overrides ── */
+body.l3 .hero-h1{font-size:clamp(44px,8.5vw,96px);line-height:1}body.l3 .hero-btns{flex-direction:column;align-items:center;gap:12px}body.l3 .hero-btn-p,body.l3 .hero-btn-s{width:min(310px,88vw);text-align:center;justify-content:center;display:flex;align-items:center}body.l3 .scard{border-top:4px solid #d4af37;border-radius:0 0 var(--radius) var(--radius);background:rgba(255,255,255,.03);border-left:none;border-right:none;border-bottom:none;backdrop-filter:none}body.l3 .scard:hover{border-top-color:#d4af37;transform:translateY(-6px)}body.l3 .hs.s3{width:400px;height:400px;top:20%;right:3%;opacity:.09}
+
+@media(max-width:768px){
+  nav{padding:0 20px}
+  .hero{padding:100px 20px 80px}
+  body.l1 .hero{padding:100px 20px 80px}
+  .sgrid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr;gap:24px}
+  .why-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr);gap:24px}
+  .titem{padding:0 24px}
+  .frow{grid-template-columns:1fr}
+  .bform{padding:28px 20px}
+  .mob-cta{display:block}
+  body{padding-bottom:64px}
+  .nav-right .btn-primary{display:none}
+  .hs.s1{width:300px;height:300px}
+  .hs.s2,.hs.s3{display:none}
+}
+</style>
+</head>
+<body class="l3">
+
+<nav>
+  <div class="nav-logo">Windermere Medical Spa</div>
+  <div class="nav-right">
+    <a href="#booking" class="btn-primary">Book Now</a>
+    <a href="tel:3214451115" class="btn-outline">&#128222; (321) 445-1115</a>
+  </div>
+</nav>
+
+<div class="hero" id="hero">
+  <div class="hs s1"></div>
+  <div class="hs s2"></div>
+  <div class="hs s3"></div>
+  <div class="hero-inner">
+    <div class="pill">&#11088; 4.9/5 &nbsp;&#183;&nbsp; 90 Google Reviews &nbsp;&#183;&nbsp; Orlando</div>
+    <h1 class="hero-h1"><span class="grad-text">Confidence Is the Goal.</span></h1>
+    <p class="hero-sub">Natural-looking results from certified aesthetic providers in Orlando.</p>
+    <div class="hero-btns">
+      <a href="#booking" class="hero-btn-p">&#128197; Book Appointment</a>
+      <a href="tel:3214451115" class="hero-btn-s">&#128222; (321) 445-1115</a>
+    </div>
+  </div>
+</div>
+
+<div class="tbar">
+  <div class="ttrack"><div class="titem"><span style="font-size:24px">🏥</span><span style="font-size:12px;font-weight:600;opacity:.7;margin-left:8px">Certified Providers</span></div><div class="titem"><span style="font-size:24px">💊</span><span style="font-size:12px;font-weight:600;opacity:.7;margin-left:8px">Medical-Grade Products</span></div><div class="titem"><span style="font-size:24px">📋</span><span style="font-size:12px;font-weight:600;opacity:.7;margin-left:8px">Free Consultation</span></div><div class="titem"><span style="font-size:24px">📍</span><span style="font-size:12px;font-weight:600;opacity:.7;margin-left:8px">Serving Orlando</span></div><div class="titem"><span style="font-size:24px">🏥</span><span style="font-size:12px;font-weight:600;opacity:.7;margin-left:8px">Certified Providers</span></div><div class="titem"><span style="font-size:24px">💊</span><span style="font-size:12px;font-weight:600;opacity:.7;margin-left:8px">Medical-Grade Products</span></div><div class="titem"><span style="font-size:24px">📋</span><span style="font-size:12px;font-weight:600;opacity:.7;margin-left:8px">Free Consultation</span></div><div class="titem"><span style="font-size:24px">📍</span><span style="font-size:12px;font-weight:600;opacity:.7;margin-left:8px">Serving Orlando</span></div><div class="titem"><span style="font-size:24px">🏥</span><span style="font-size:12px;font-weight:600;opacity:.7;margin-left:8px">Certified Providers</span></div><div class="titem"><span style="font-size:24px">💊</span><span style="font-size:12px;font-weight:600;opacity:.7;margin-left:8px">Medical-Grade Products</span></div><div class="titem"><span style="font-size:24px">📋</span><span style="font-size:12px;font-weight:600;opacity:.7;margin-left:8px">Free Consultation</span></div><div class="titem"><span style="font-size:24px">📍</span><span style="font-size:12px;font-weight:600;opacity:.7;margin-left:8px">Serving Orlando</span></div><div class="titem"><span style="font-size:24px">🏥</span><span style="font-size:12px;font-weight:600;opacity:.7;margin-left:8px">Certified Providers</span></div><div class="titem"><span style="font-size:24px">💊</span><span style="font-size:12px;font-weight:600;opacity:.7;margin-left:8px">Medical-Grade Products</span></div><div class="titem"><span style="font-size:24px">📋</span><span style="font-size:12px;font-weight:600;opacity:.7;margin-left:8px">Free Consultation</span></div><div class="titem"><span style="font-size:24px">📍</span><span style="font-size:12px;font-weight:600;opacity:.7;margin-left:8px">Serving Orlando</span></div></div>
+</div>
+
+<div class="stats-bar"><div class="stats-inner"><div class="animate"><div class="stat-num" data-target="90">90</div><div class="stat-lbl">Google Reviews</div></div><div class="animate"><div class="stat-num">4.9</div><div class="stat-lbl">Star Rating</div></div><div class="animate"><div class="stat-num">Orlando</div><div class="stat-lbl">Service Area</div></div></div></div>
+
+<div id="services" style="padding:100px 24px">
+  <div style="max-width:1000px;margin:0 auto">
+    <span class="eyebrow animate">What We Do</span>
+    <h2 class="section-h2 animate">Our Services</h2>
+    <div class="sgrid"><div class="scard animate" style="animation-delay:0.00s"><div class="scard-icon">✨</div><h3 style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;margin:0 0 10px;color:#fef9e8">Botox Injections</h3><p style="font-size:13px;line-height:1.75;opacity:.65;margin:0 0 20px">Precision injections by certified providers for smooth, natural-looking results.</p><a href="#booking" style="font-size:12px;font-weight:700;color:#d4af37;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid #d4af37;padding-bottom:2px">Book This &#8594;</a></div><div class="scard animate" style="animation-delay:0.08s"><div class="scard-icon">💉</div><h3 style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;margin:0 0 10px;color:#fef9e8">Laser Hair Removal</h3><p style="font-size:13px;line-height:1.75;opacity:.65;margin:0 0 20px">Restore volume and contour with expert filler placement and an artistic eye.</p><a href="#booking" style="font-size:12px;font-weight:700;color:#d4af37;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid #d4af37;padding-bottom:2px">Book This &#8594;</a></div><div class="scard animate" style="animation-delay:0.16s"><div class="scard-icon">🔬</div><h3 style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;margin:0 0 10px;color:#fef9e8">Chemical Peels</h3><p style="font-size:13px;line-height:1.75;opacity:.65;margin:0 0 20px">Hair removal, skin resurfacing, and pigmentation correction with medical-grade lasers.</p><a href="#booking" style="font-size:12px;font-weight:700;color:#d4af37;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid #d4af37;padding-bottom:2px">Book This &#8594;</a></div><div class="scard animate" style="animation-delay:0.24s"><div class="scard-icon">🌟</div><h3 style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;margin:0 0 10px;color:#fef9e8">Microneedling</h3><p style="font-size:13px;line-height:1.75;opacity:.65;margin:0 0 20px">Medical-grade treatments for refreshed, radiant, balanced skin.</p><a href="#booking" style="font-size:12px;font-weight:700;color:#d4af37;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid #d4af37;padding-bottom:2px">Book This &#8594;</a></div><div class="scard animate" style="animation-delay:0.32s"><div class="scard-icon">💎</div><h3 style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;margin:0 0 10px;color:#fef9e8">IV Vitamin Therapy</h3><p style="font-size:13px;line-height:1.75;opacity:.65;margin:0 0 20px">Non-invasive sculpting and skin tightening tailored to your body goals.</p><a href="#booking" style="font-size:12px;font-weight:700;color:#d4af37;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid #d4af37;padding-bottom:2px">Book This &#8594;</a></div><div class="scard animate" style="animation-delay:0.40s"><div class="scard-icon">📋</div><h3 style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;margin:0 0 10px;color:#fef9e8">Body Contouring</h3><p style="font-size:13px;line-height:1.75;opacity:.65;margin:0 0 20px">Personalized aesthetic planning with a certified provider. No pressure, just clarity.</p><a href="#booking" style="font-size:12px;font-weight:700;color:#d4af37;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid #d4af37;padding-bottom:2px">Book This &#8594;</a></div></div>
+  </div>
+</div>
+
+<div class="section-bg" id="why">
+  <div class="section-bg-inner">
+    <span class="eyebrow animate">Why Choose Us</span>
+    <h2 class="section-h2 animate">What Sets Us Apart</h2>
+    <div class="why-grid"><div class="why-card animate" style="animation-delay:0.00s"><div class="why-icon" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)">🏥</div><div><h4 style="font-size:16px;font-weight:700;margin:0 0 6px;color:#fef9e8">Board-Certified Providers</h4><p style="font-size:13px;opacity:.6;margin:0;line-height:1.65">Only trained, certified providers perform treatments — never techs alone.</p></div></div><div class="why-card animate" style="animation-delay:0.10s"><div class="why-icon" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)">💊</div><div><h4 style="font-size:16px;font-weight:700;margin:0 0 6px;color:#fef9e8">Medical-Grade Products</h4><p style="font-size:13px;opacity:.6;margin:0;line-height:1.65">We use only FDA-approved, medical-grade products and equipment.</p></div></div><div class="why-card animate" style="animation-delay:0.20s"><div class="why-icon" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)">📋</div><div><h4 style="font-size:16px;font-weight:700;margin:0 0 6px;color:#fef9e8">Free Consultation</h4><p style="font-size:13px;opacity:.6;margin:0;line-height:1.65">Start with a no-obligation consultation to build your personalized plan.</p></div></div><div class="why-card animate" style="animation-delay:0.30s"><div class="why-icon" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)">✨</div><div><h4 style="font-size:16px;font-weight:700;margin:0 0 6px;color:#fef9e8">Natural Results</h4><p style="font-size:13px;opacity:.6;margin:0;line-height:1.65">Our goal is enhancement, not transformation. You still look like you.</p></div></div></div>
+  </div>
+</div>
+
+<div style="background:var(--mid);padding:100px 24px" id="process">
+  <div style="max-width:1000px;margin:0 auto;text-align:center">
+    <span class="eyebrow animate">The Process</span>
+    <h2 class="section-h2 animate">How It Works</h2>
+    <div class="steps"><div class="step animate" style="animation-delay:0.00s"><div class="step-num" style="background:linear-gradient(135deg,#d4af37,#d4af3799)">1</div><h3 style="font-size:17px;font-weight:700;margin:16px 0 8px;color:#fef9e8">Book a Consultation</h3><p style="font-size:13px;opacity:.6;line-height:1.65">Schedule your free consultation. We listen to your goals and assess your needs.</p></div><div class="step animate" style="animation-delay:0.12s"><div class="step-num" style="background:linear-gradient(135deg,#d4af37,#d4af3799)">2</div><h3 style="font-size:17px;font-weight:700;margin:16px 0 8px;color:#fef9e8">Personalized Treatment Plan</h3><p style="font-size:13px;opacity:.6;line-height:1.65">We design a treatment plan around your goals, skin type, and timeline.</p></div><div class="step animate" style="animation-delay:0.24s"><div class="step-num" style="background:linear-gradient(135deg,#d4af37,#d4af3799)">3</div><h3 style="font-size:17px;font-weight:700;margin:16px 0 8px;color:#fef9e8">Leave Refreshed</h3><p style="font-size:13px;opacity:.6;line-height:1.65">Professional, natural-looking results in a comfortable clinical environment.</p></div></div>
+  </div>
+</div>
+
+<section style="background:#0c0900;padding:100px 24px" id="reviews">
+    <div style="max-width:1000px;margin:0 auto">
+      <p class="eyebrow animate" style="color:#d4af37">What Customers Say</p>
+      <h2 class="section-h2 animate">Google Reviews</h2>
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;flex-wrap:wrap" class="animate">
+        <span style="color:#d4af37;font-size:22px;letter-spacing:2px">★★★★★</span> <span style="font-size:18px;font-weight:700">4.9/5</span>
+        <span style="opacity:.5">·</span>
+        <span style="opacity:.6">90 reviews</span>
+        <a href="https://www.google.com/search?q=Windermere+Medical+Spa" target="_blank" style="color:#d4af37;font-size:13px;border:1px solid #d4af37;padding:4px 14px;border-radius:20px;margin-left:auto">See on Google ↗</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px" class="animate"><span style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:4px 12px;border-radius:20px;font-size:12px">natural results</span> · <span style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:4px 12px;border-radius:20px;font-size:12px">attentive staff</span> · <span style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:4px 12px;border-radius:20px;font-size:12px">comfortable environment</span> · <span style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:4px 12px;border-radius:20px;font-size:12px">excellent technique</span></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px"><div class="rcard animate" style="background:#161005;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:28px 24px">
+          <div style="margin-bottom:12px"><span style="color:#d4af37;font-size:22px;letter-spacing:2px">★★★★★</span></div>
+          <p style="font-size:14px;line-height:1.75;color:rgba(255,255,255,.72);margin-bottom:18px">"Do not go here, avoid at all costs. The biggest scam Ive ever experienced. I had a head spa treatment and left with half of my hair ripped out of my head, and my scalp in pain. I have never had that happen at other places when receiving th..."</p>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#d4af37;opacity:.7">VIA GOOGLE REVIEWS</div>
+        </div><div class="rcard animate" style="background:#161005;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:28px 24px">
+          <div style="margin-bottom:12px"><span style="color:#d4af37;font-size:22px;letter-spacing:2px">★★★★★</span></div>
+          <p style="font-size:14px;line-height:1.75;color:rgba(255,255,255,.72);margin-bottom:18px">"I cant say enough great things about Windermere Medical Spa &amp; Laser Institute! Every visit is an exceptional experience. Lindsey is incredibly professional, knowledgeable, and truly passionate about what she does. She takes the time to und..."</p>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#d4af37;opacity:.7">VIA GOOGLE REVIEWS</div>
+        </div><div class="rcard animate" style="background:#161005;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:28px 24px">
+          <div style="margin-bottom:12px"><span style="color:#d4af37;font-size:22px;letter-spacing:2px">★★★★★</span></div>
+          <p style="font-size:14px;line-height:1.75;color:rgba(255,255,255,.72);margin-bottom:18px">"I recently had the most incredible treatment! I went in knowing I wanted something to tighten my face and neck and decided to do sofwave. NP Jackson explained everything in depth and was very knowledgeable about all the services. So glad I ..."</p>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#d4af37;opacity:.7">VIA GOOGLE REVIEWS</div>
+        </div></div>
+    </div>
+  </section>
+
+<div id="faq" style="padding:100px 24px;background:var(--surf)">
+  <div style="max-width:720px;margin:0 auto">
+    <span class="eyebrow animate">FAQ</span>
+    <h2 class="section-h2 animate">Common Questions</h2>
+    <div><div class="faq-item animate" style="animation-delay:0.00s"><button class="faq-q" onclick="toggleFaq(this)"><span>Do I need a consultation before treatment?</span><span class="faq-icon">+</span></button><div class="faq-a">Yes, we always start with a consultation. It's free, no-pressure, and helps us build the right plan for your skin type and goals.</div></div><div class="faq-item animate" style="animation-delay:0.07s"><button class="faq-q" onclick="toggleFaq(this)"><span>How long do results last?</span><span class="faq-icon">+</span></button><div class="faq-a">It depends on the treatment. Botox typically lasts 3–4 months, fillers 6–18 months, and laser results can be long-term with proper maintenance.</div></div><div class="faq-item animate" style="animation-delay:0.14s"><button class="faq-q" onclick="toggleFaq(this)"><span>Are the treatments safe?</span><span class="faq-icon">+</span></button><div class="faq-a">All treatments are FDA-cleared and performed by certified providers. We prioritize safety, natural outcomes, and your comfort throughout.</div></div><div class="faq-item animate" style="animation-delay:0.21s"><button class="faq-q" onclick="toggleFaq(this)"><span>Will the treatments look natural?</span><span class="faq-icon">+</span></button><div class="faq-a">Natural enhancement is our goal. We're conservative by design — you should look refreshed, not overdone.</div></div><div class="faq-item animate" style="animation-delay:0.28s"><button class="faq-q" onclick="toggleFaq(this)"><span>How do I book a consultation?</span><span class="faq-icon">+</span></button><div class="faq-a">Use the form below, call us directly, or text us. We'll confirm your appointment within a few hours.</div></div></div>
+  </div>
+</div>
+
+<div id="booking" style="padding:100px 24px">
+  <div style="max-width:800px;margin:0 auto;text-align:center">
+    <span class="eyebrow animate">Get Started</span>
+    <h2 class="section-h2 animate">Book Your Appointment</h2>
+    <p class="section-sub animate" style="margin:0 auto 48px">Fill out the form and we will confirm within 2 hours. Rather call now? (321) 445-1115</p>
+    <div class="bform animate">
+      <div class="frow">
+        <div class="fg"><label>Your Name</label><input type="text" id="fn" placeholder="John Smith" required></div>
+        <div class="fg"><label>Your Phone</label><input type="tel" id="fp" placeholder="(555) 000-0000" required></div>
+      </div>
+      <div class="fg"><label>Your Email</label><input type="email" id="fe" placeholder="you@email.com"></div>
+      <div class="fg"><label>Service Needed</label><select id="fs"><option value="">Select a service...</option><option>Botox Injections</option><option>Laser Hair Removal</option><option>Chemical Peels</option><option>Microneedling</option><option>IV Vitamin Therapy</option><option>Body Contouring</option><option>Not sure - need consultation</option></select></div>
+      <div class="frow">
+        <div class="fg"><label>Preferred Date</label><input type="date" id="fd"></div>
+        <div class="fg"><label>Preferred Time</label><input type="time" id="ft"></div>
+      </div>
+      <div class="fg"><label>Additional Notes</label><textarea id="fn2" rows="3" placeholder="Location, details, or anything else we should know..."></textarea></div>
+      <button class="subtn" onclick="submitForm()">Request Appointment &#8594;</button>
+      <p class="cmsg">&#10003; Confirmation within 2 hours &nbsp;&#183;&nbsp; No payment required to book</p>
+    </div>
+  </div>
+</div>
+
+<div class="csec" id="contact">
+  <span class="eyebrow" style="color:#d4af37">Reach Us</span>
+  <h2 class="section-h2">Call or Text Anytime</h2>
+  <a href="tel:3214451115" class="big-phone">(321) 445-1115</a>
+  
+  <p style="opacity:.4;margin-top:16px;font-size:14px">Serving Orlando &middot; Kissimmee &middot; Winter Park &middot; Sanford &middot; Oviedo</p>
+</div>
+
+<div style="background:var(--surf);padding:32px 24px;text-align:center;border-top:1px solid rgba(255,255,255,.06)">
+  <p style="font-size:12px;opacity:.4">&#128205; Service Area: Orlando &middot; Kissimmee &middot; Winter Park &middot; Sanford &middot; Oviedo</p>
+</div>
+
+<footer>
+  &copy; 2026 Windermere Medical Spa &nbsp;&#183;&nbsp; Orlando &nbsp;&#183;&nbsp;
+  <a href="tel:3214451115" style="color:#d4af37">(321) 445-1115</a><br>
+  <span style="opacity:.5">Sample website preview prepared for Windermere Medical Spa by GDI Web Solutions &nbsp;&#183;&nbsp; windermeremedspa.com</span>
+</footer>
+
+<a href="tel:3214451115" class="mob-cta">&#128222; Call Now &mdash; (321) 445-1115</a>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, {threshold: 0.08, rootMargin: '0px 0px -30px 0px'});
+document.querySelectorAll('.animate').forEach(el => obs.observe(el));
+
+function countUp(el) {
+  const target = parseInt(el.dataset.target);
+  if (!target || target < 2) return;
+  const dur = 1800, step = target / (dur / 16);
+  let cur = 0;
+  const t = setInterval(() => {
+    cur = Math.min(cur + step, target);
+    el.textContent = Math.round(cur).toLocaleString();
+    if (cur >= target) clearInterval(t);
+  }, 16);
+}
+document.querySelectorAll('.stat-num[data-target]').forEach(el => {
+  const io = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) { countUp(el); io.disconnect(); }
+  });
+  io.observe(el);
+});
+
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+function submitForm() {
+  var nm=document.getElementById('fn').value,ph=document.getElementById('fp').value,
+      em=document.getElementById('fe').value,svc=document.getElementById('fs').value,
+      dt=document.getElementById('fd').value,tm=document.getElementById('ft').value,
+      nt=document.getElementById('fn2').value;
+  if (!nm||!ph||!svc) { alert('Please fill in your name, phone, and service needed.'); return; }
+  var body='New Booking%0AName: '+encodeURIComponent(nm)+'%0APhone: '+encodeURIComponent(ph)+'%0AService: '+encodeURIComponent(svc)+'%0ADate: '+encodeURIComponent(dt)+'%0ATime: '+encodeURIComponent(tm)+'%0ANotes: '+encodeURIComponent(nt);
+  window.location.href='tel:3214451115';
+  document.querySelector('.bform').innerHTML='<div style="text-align:center;padding:60px 20px"><div style="font-size:60px;margin-bottom:20px">&#10003;</div><h3 style="font-family:Syne,sans-serif;font-size:24px;margin-bottom:12px;color:var(--txt)">Request Sent!</h3><p style="opacity:.6">We will confirm within 2 hours. Call (321) 445-1115 for anything urgent.</p></div>';
+}
+</script>
+</body>
+</html>
